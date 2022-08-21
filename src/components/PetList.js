@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import SinglePet from './SinglePet';
 
@@ -22,7 +23,7 @@ function PetList(props) {
     return pet.species === "dog"
   })
   
-  const [pets, setPets] = useState(props.pets)
+  const [pets, setPets] = useState([])
 
   const change = (event) => {
  
@@ -37,9 +38,13 @@ function PetList(props) {
     }
   }
 
-
+  useEffect(()=> {
+    function newRender(){
+      setPets(props.pets)
+    }
+    newRender()
+  },[props.pets])
   
-
   function selector(){
       // const change = document.querySelector('#species').value
 
@@ -57,7 +62,6 @@ function PetList(props) {
       )
     }
   
-
   return (
     <>
       {selector()}

@@ -12,12 +12,10 @@ const Root = () => {
   const [loading, setLoading] = useState(true)
 
   function handleDelete(id) {
-    let newPets = [...pets]
-    newPets = newPets.filter((pet) => pet.id !== id)
-    
+
+    const newPets = pets.filter((pet) => pet.id !== id)
+ 
     setPets(newPets)
-    console.log(pets)
-    console.log(newPets)
   }
 
 
