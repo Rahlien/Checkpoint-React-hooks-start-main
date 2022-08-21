@@ -14,10 +14,13 @@ const DeletePet = (props, {handleDelete}) => {
         selectPet()
       }, [])
     
-    function handleDelete(){
-        console.log(chosenPet.id)
-        return chosenPet.id
-    }
+    React.useEffect(() => {
+        function handleDelete(){
+            console.log(chosenPet)
+        }
+        
+        handleDelete(chosenPet.id)
+    }, [])
 
     return (
         <div>

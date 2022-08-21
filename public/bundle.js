@@ -2491,31 +2491,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var DeletePet = function DeletePet(props, _ref) {
   var handleDelete = _ref.handleDelete;
-  return function (handleDelete) {
-    var pet = props.pets;
+  var pet = props.pets;
 
-    var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        chosenPet = _React$useState2[0],
-        setChosenPet = _React$useState2[1];
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      chosenPet = _React$useState2[0],
+      setChosenPet = _React$useState2[1];
 
-    react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-      function selectPet() {
-        setChosenPet(pet);
-      }
-
-      selectPet();
-    }, []);
-
-    function handleDelete() {
-      console.log(chosenPet.id);
-      return chosenPet.id;
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    function selectPet() {
+      setChosenPet(pet);
     }
 
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      onClick: handleDelete
-    }, "Delete Pet"));
-  }(handleDelete);
+    selectPet();
+  }, []);
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    function handleDelete() {
+      console.log(chosenPet);
+    }
+
+    handleDelete(chosenPet.id);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleDelete
+  }, "Delete Pet"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeletePet);
@@ -2760,42 +2759,37 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 
 
 
 function SinglePet(props, _ref) {
   var handleDelete = _ref.handleDelete;
-  return function (handleDelete) {
-    var id = props.pet.id;
-    var name = props.pet.name;
-    var description = props.pet.description;
-    var species = props.pet.species;
+  var id = props.pet.id;
+  var name = props.pet.name;
+  var description = props.pet.description;
+  var species = props.pet.species;
 
-    var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        adopt = _React$useState2[0],
-        setAdopt = _React$useState2[1];
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      adopt = _React$useState2[0],
+      setAdopt = _React$useState2[1];
 
-    function adoptChecker() {
-      setAdopt(!adopt);
-    }
+  function adoptChecker() {
+    setAdopt(!adopt);
+  } // function handleDelete(id){
+  //   console.log(id)
+  //   return id
+  // }
 
-    function handleDelete(id) {
-      console.log(id);
-      return id;
-    }
 
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: adopt ? "single-pet adopted" : "single-pet"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, species)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, adopt ? "Adopted" : "Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      onClick: adoptChecker
-    }, "Toggle Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DeletePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      pets: props.pet,
-      handleDelete: handleDelete
-    })));
-  }(handleDelete);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: adopt ? "single-pet adopted" : "single-pet"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("b", null, species)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, adopt ? "Adopted" : "Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: adoptChecker
+  }, "Toggle Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DeletePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    pets: props.pet,
+    handleDelete: handleDelete
+  })));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SinglePet);
