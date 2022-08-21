@@ -11,7 +11,7 @@ const cody = {
 
 // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
-function PetList(props) {
+function PetList(props, {handleDelete}) {
   const pets = props.pets
   
   const cats = pets.filter(pet => {
@@ -25,7 +25,7 @@ function PetList(props) {
   const [species, setSpecies] = React.useState(pets)
 
   const change = (event) => {
-    console.log(event.target.value)
+ 
     if(event.target.value === "all") {
       return setSpecies(pets)
     }
@@ -35,9 +35,8 @@ function PetList(props) {
     if(event.target.value === "cat") {
       return setSpecies(cats)
     }
-    console.log(species)
   }
-
+  console.log(species)
 
   function selector(){
       // const change = document.querySelector('#species').value
@@ -55,15 +54,18 @@ function PetList(props) {
         
       )
     }
+  function onDelete(id){
+    console.log(id)
+    return id
+  }
   
-
 
   return (
     <>
       {selector()}
       <div className="pet-list"> 
       {
-        species.map(pet => <SinglePet pet={pet} key={pet.id}/>)
+        species.map(pet => <SinglePet pets={pets} pet={pet} key={pet.id} handleDelete={handleDelete}/>)
       }      
       </div>
     </>
