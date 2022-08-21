@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SinglePet from './SinglePet';
+
 
 
 const cody = {
@@ -11,32 +12,33 @@ const cody = {
 
 // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
-function PetList(props, {handleDelete}) {
-  const pets = props.pets
-  
-  const cats = pets.filter(pet => {
+function PetList(props) {
+
+  const cats = props.pets.filter(pet => {
     return pet.species === "cat"
   })
 
-  const dogs = pets.filter(pet => {
+  const dogs = props.pets.filter(pet => {
     return pet.species === "dog"
   })
   
-  const [species, setSpecies] = React.useState(pets)
+  const [pets, setPets] = useState(props.pets)
 
   const change = (event) => {
  
     if(event.target.value === "all") {
-      return setSpecies(pets)
+      return setPets(props.pets)
     }
     if(event.target.value === "dog") {
-      return setSpecies(dogs)
+      return setPets(dogs)
     }
     if(event.target.value === "cat") {
-      return setSpecies(cats)
+      return setPets(cats)
     }
   }
-  console.log(species)
+
+
+  
 
   function selector(){
       // const change = document.querySelector('#species').value
@@ -54,10 +56,6 @@ function PetList(props, {handleDelete}) {
         
       )
     }
-  function onDelete(id){
-    console.log(id)
-    return id
-  }
   
 
   return (
@@ -65,7 +63,7 @@ function PetList(props, {handleDelete}) {
       {selector()}
       <div className="pet-list"> 
       {
-        species.map(pet => <SinglePet pets={pets} pet={pet} key={pet.id} handleDelete={handleDelete}/>)
+        pets.map(pet => <SinglePet pet={pet} key={pet.id} handleDelete={props.handleDelete}/>)
       }      
       </div>
     </>

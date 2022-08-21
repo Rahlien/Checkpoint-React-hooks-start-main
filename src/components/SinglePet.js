@@ -1,7 +1,7 @@
 import React from 'react';
 import DeletePet from './DeletePet';
 
-function SinglePet(props, {handleDelete}) {
+function SinglePet(props) {
 
   const id = props.pet.id
   const name = props.pet.name
@@ -28,7 +28,7 @@ function SinglePet(props, {handleDelete}) {
           <p><b>{species}</b></p>
           <h3>{adopt ? "Adopted":"Available"}</h3>
           <button onClick={adoptChecker}>Toggle Status</button>
-          <DeletePet pets={props.pet}  handleDelete={handleDelete} />
+          <DeletePet pet={props.pet}  handleDelete={props.handleDelete} />
         </a>
     </div>
   );

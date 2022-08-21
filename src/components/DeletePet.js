@@ -1,30 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 
-const DeletePet = (props, {handleDelete}) => {
-    const pet = props.pets
+const DeletePet = (props) => {
+    const pet = props.pet
 
+    const[chosenPet, setChosenPet] = useState([])
 
-    const[chosenPet, setChosenPet] = React.useState([])
-
-    React.useEffect(() => {
+    useEffect(() => {
         function selectPet(){
             setChosenPet(pet)
         }
         selectPet()
       }, [])
     
-    React.useEffect(() => {
-        function handleDelete(){
-            console.log(chosenPet)
-        }
-        
-        handleDelete(chosenPet.id)
-    }, [])
+    function onDelete(){
+        props.handleDelete(chosenPet.id)
+    }
+    
 
     return (
         <div>
-            <button onClick={handleDelete}>Delete Pet</button>
+            <button onClick={onDelete}>Delete Pet</button>
         </div>
     )
 }
